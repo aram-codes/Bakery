@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        :root {
+            --main-color: rgb(136, 0, 63);
+            --sec-color: rgb(238, 226, 226);
+            --primary-color: rgb(211, 111, 166);
+            --text-color: white;
+            --heading-font: Verdana, Geneva, Tahoma, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            background-color: var(--main-color);
+            font-family: var(--heading-font);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* --- NAVIGATION (LOGO & LINKS IN ONE LINE) --- */
+        nav {
+            background-color: var(--main-color);
+            width: 100%;
+            max-width: 2560px;
+            min-height: 60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap; 
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+             margin: 0 auto;
+            padding: 10px 4%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap; 
+            gap: clamp(3px, 1vw, 15px); 
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: clamp(11px, 2.3vw, 19px); 
+            padding: 5px clamp(4px, 1vw, 12px);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        nav li a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .logo-img {
+            height: clamp(25px, 5vw, 60px);
+            width: auto;
+            object-fit: contain;
+            margin-left: 10px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            background-color: var(--main-color);
+            overflow: hidden;
+        }
+
+        .img {
+            width: 100%;
+            height: clamp(350px, 75vh, 900px);
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.7);
+        }
+
+        .title-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 5%;
+            right: 5%;
+            color: var(--text-color);
+            text-align: center; 
+        }
+
+        .title h1 {
+            font-size: clamp(28px, 9vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .sub-title p {
+            font-size: clamp(14px, 3.5vw, 24px);
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: clamp(10px, 1.5vw, 18px) clamp(20px, 3vw, 40px);
+            border-radius: 50px;
+            background-color: var(--sec-color);
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(13px, 2vw, 18px);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- GRID SECTION --- */
+        .title-2 {
+            text-align: center;
+            font-size: clamp(22px, 5vw, 40px);
+            padding: clamp(40px, 10vh, 100px) 20px 30px;
+            color: var(--sec-color);
+            letter-spacing: 2px;
+        }
+
+        .boxes {
+            background-color: var(--sec-color);
+            width: 92%;
+            max-width: 2200px;
+            margin: 0 auto 80px;
+            padding: clamp(20px, 5vw, 60px);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .box {
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .box img {
+            width: 100%;
+            height: clamp(180px, 30vh, 350px);
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h3 {
+            color: var(--main-color);
+            margin-bottom: 8px;
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
+        }
+
+        .box p {
+            color: var(--main-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* --- MEDIA QUERIES FOR SPECIFIC REFINEMENTS --- */
+
+        /* Desktop Text Alignment */
+        @media (min-width: 768px) {
+            .title-container {
+                text-align: left;
+                left: 8%;
+                right: auto;
+                max-width: 60%;
+            }
+        }
+
+        /* Ultra-Small (240px - 320px) Fixes */
+        @media (max-width: 320px) {
+            nav {
+                padding: 10px 2%;
+            }
+            nav ul li a {
+                padding: 4px 3px;
+            }
+            .logo-img {
+                height: 22px;
+            }
+        }
+
+        /* 4K Screen Grid Lock */
+        @media (min-width: 2200px) {
+            .boxes {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <img src="pngwing.com.png" alt="Logo" class="logo-img">
+    </nav>
+
+    <section class="hero">
+        <img class="img" src="croissant.jpg" alt="Bakery Hero">
+        <main class="title-container">
+            <div class="title">
+                <h1>Hand-Kneaded,<br>Heart-Fed.</h1>
+            </div>
+            <div class="sub-title">
+                <p><b>Daily Sourdough & Warmth.</b></p>
+            </div>
+            <a href="menu.html" class="btn-primary">Explore Our Menu</a>
+        </main>
+    </section>
+
+    <section>
+        <div class="title-2">
+            <h2>Freshly Baked Today</h2>
+        </div>
+        <div class="boxes">
+            <div class="box">
+                <img src="cupcakes.jpg" alt="Cupcakes">
+                <h3>CUPCAKES</h3>
+                <p>$20</p>
+            </div>
+            <div class="box">
+                <img src="cheese cake.jpg" alt="Cheese Cakes">
+                <h3>CHEESE CAKES</h3>
+                <p>$30</p>
+            </div>
+            <div class="box">
+                <img src="Brownies.webp" alt="Brownies">
+                <h3>BROWNIES</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="ChocolateBowl.png" alt="Chocolate Bowl">
+                <h3>CHOCOLATE BOWL</h3>
+                <p>$20</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

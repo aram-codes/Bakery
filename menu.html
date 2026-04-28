@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        :root {
+            --main-color: rgb(136, 0, 63);
+            --sec-color: rgb(238, 226, 226);
+            --primary-color: rgb(211, 111, 166);
+            --text-color: white;
+            --heading-font: 'Verdana', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            background-color: var(--main-color);
+            font-family: var(--heading-font);
+            overflow-x: hidden;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- NAVIGATION  --- */
+        nav {
+            background-color: var(--main-color);
+            width: 100%;
+            max-width: 2560px;
+            min-height: 60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap; 
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+             margin: 0 auto;
+            padding: 10px 4%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap; 
+            gap: clamp(3px, 1vw, 15px); 
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: clamp(11px, 2.3vw, 19px); 
+            padding: 5px clamp(4px, 1vw, 12px);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        nav li a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .logo-img {
+            height: clamp(25px, 5vw, 60px);
+            width: auto;
+            object-fit: contain;
+            margin-left: 10px;
+        }
+
+
+        /* --- SECTION STYLING --- */
+        section.menu {
+            width: 100%;
+            max-width: 2400px;
+            padding: 20px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .title-1, .title-2, .title-3, .title-4 {
+            text-align: center;
+            padding: clamp(40px, 8vh, 80px) 0 30px;
+            color: var(--sec-color);
+        }
+
+        h2 {
+            font-size: clamp(20px, 4vw, 40px);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        /* --- RESPONSIVE GRID --- */
+        .boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+            gap: clamp(20px, 4vw, 50px);
+            margin-bottom: 40px;
+        }
+
+        .box {
+            text-align: center;
+            transition: var(--transition);
+            padding: 10px;
+        }
+
+        .box img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        .box:hover img {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        h3 {
+            color: var(--sec-color);
+            font-size: clamp(15px, 2vw, 20px);
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: clamp(14px, 1.5vw, 18px);
+        }
+
+        /* --- EXTRA RESPONSIVENESS --- */
+        
+        @media (max-width: 300px) {
+            nav { padding: 5px; }
+            nav ul { gap: 5px; }
+            h2 { font-size: 18px; }
+        }
+
+        /* Tweaks for Ultra-Wide (2560px) */
+        @media (min-width: 2000px) {
+            .boxes {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <img class="logo-img" src="pngwing.com.png" alt="Logo">
+    </nav>
+
+    <section class="menu">
+        <div class="title-1"><h2>Best Seller</h2></div>
+        <div class="boxes">
+            <div class="box">
+                <img src="coffee.jpg" alt="Coffee">
+                <h3>Coffee</h3>
+                <p>$10</p>
+            </div>
+            <div class="box">
+                <img src="ChocolateBowl.png" alt="Chocolate Bowl">
+                <h3>Chocolate Bowl</h3>
+                <p>$20</p>
+            </div>
+            <div class="box">
+                <img src="strawberryi.jpg" alt="Strawberry Ice-creams">
+                <h3>Strawberry Ice-creams</h3>
+                <p>$15</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu">
+        <div class="title-2"><h2>Quick Bites</h2></div>
+        <div class="boxes">
+            <div class="box">
+                <img src="large pizza.jpg" alt="Pizza">
+                <h3>Large-Pizza</h3>
+                <p>$25</p>
+            </div>
+            <div class="box">
+                <img src="burger.jpg" alt="Burger">
+                <h3>Burger</h3>
+                <p>$8</p>
+            </div>
+            <div class="box">
+                <img src="momos.jpg" alt="Momos">
+                <h3>Momos</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="fries.jpg" alt="Fries">
+                <h3>Salted Fries</h3>
+                <p>$9</p>
+            </div>
+            <div class="box">
+                <img src="noodles.jpg" alt="Noodles">
+                <h3>Noodles</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="fried-chicken.avif" alt="Chicken">
+                <h3>Fried Chicken</h3>
+                <p>$16</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu">
+        <div class="title-3"><h2>The Chill Zone</h2></div>
+        <div class="boxes">
+            <div class="box">
+                <img src="Rainbowi.jpg" alt="Rainbow">
+                <h3>Rainbow Scoop</h3>
+                <p>$10</p>
+            </div>
+            <div class="box">
+                <img src="chocoi.jpg" alt="Chocolate">
+                <h3>Chocolate Scoop</h3>
+                <p>$10</p>
+            </div>
+            <div class="box">
+                <img src="coconuti.jpg" alt="Coconut">
+                <h3>Coconut Scoop</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="vanilla.jpg" alt="Vanilla">
+                <h3>Vanilla Scoop</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="chocobar.jpg" alt="Chocobar">
+                <h3>Chocolate Chocobar</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="icecream bowl.jpg" alt="Ice cream bowl">
+                <h3>Ice-cream Bowl</h3>
+                <p>$25</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu">
+        <div class="title-4"><h2>Cakes</h2></div>
+        <div class="boxes">
+            <div class="box">
+                <img src="redwhitec.jpg" alt="Cake">
+                <h3>Red & White Cake</h3>
+                <p>$10</p>
+            </div>
+            <div class="box">
+                <img src="cake.jpg" alt="Cake">
+                <h3>Chocolate Cake</h3>
+                <p>$20</p>
+            </div>
+            <div class="box">
+                <img src="strawberryc.jpg" alt="Cake">
+                <h3>Strawberry Cake</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="redc.jpg" alt="Cake">
+                <h3>Red Velvet Cake</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="butterflyc.jpg" alt="Cake">
+                <h3>Butterfly Cake</h3>
+                <p>$15</p>
+            </div>
+            <div class="box">
+                <img src="chocotufflec.webp" alt="Cake">
+                <h3>Choco Tuffle Cake</h3>
+                <p>$15</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

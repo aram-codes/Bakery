@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery</title>
+    <style>
+    
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        :root{
+            --main-color: rgb(136, 0, 63);
+            --sec-color: rgb(238, 226, 226);
+            --primary-color: rgb(211, 111, 166);
+            --text-color: white;
+            --heading-font: Verdana, Geneva, Tahoma, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        } 
+
+        body{
+            background-color: var(--main-color);
+            font-family: var(--heading-font);
+            overflow-x: hidden;
+            width: 100%;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--main-color);
+            width: 100%;
+            max-width: 2560px;
+            min-height: 60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap; 
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+             margin: 0 auto;
+            padding: 10px 4%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+           gap: clamp(3px, 1vw, 15px); 
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: clamp(11px, 2.3vw, 19px); 
+            padding: 5px clamp(4px, 1vw, 12px);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .logo-img {
+            height: clamp(30px, 5vw, 65px);
+            width: auto;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        /* --- HERO / STORY SECTION --- */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(20px, 5vw, 80px);
+            max-width: 1600px; 
+            margin: clamp(40px, 8vh, 100px) auto;
+            padding: 0 5%;
+        }
+
+        .img-wrapper {
+            flex: 1 1 300px;
+            max-width: 600px;
+        }
+
+        .img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 12px 12px 0px var(--primary-color);
+            display: block;
+            transition: var(--transition);
+        }
+
+        .story {
+            flex: 1 1 300px;
+        }
+
+        .story-title {
+            font-size: clamp(1.6rem, 4.5vw, 3.5rem);
+            color: var(--text-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .para-story {
+            font-size: clamp(0.95rem, 1.3vw, 1.25rem);
+            color: var(--sec-color);
+            max-width: 750px;
+        }
+
+        /* --- CARDS SECTION --- */
+        .services-values {
+            background-color: var(--main-color);
+            padding: clamp(50px, 10vh, 120px) 5%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: clamp(20px, 4vw, 50px);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .content-card {
+            background: var(--sec-color); 
+            padding: clamp(20px, 5vw, 45px);
+            border-radius: 20px;
+            color: #333;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .section-title {
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            color: var(--main-color);
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .item h3 {
+            font-size: 1.15rem;
+            color: #000;
+            margin: 20px 0 5px 0;
+        }
+
+        .item p {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        /* --- SPECIAL ADJUSTMENTS --- */
+
+        /* Extra tight handling for 240px - 300px */
+        @media (max-width: 300px) {
+            nav { padding: 5px 2%; }
+            nav ul { gap: 3px; }
+            nav ul li a { letter-spacing: -0.5px; }
+            .logo-img { height: 25px; }
+        }
+
+        /* Handling Ultra-Wide 4K Screens (2560px) */
+        @media (min-width: 2000px) {
+            .container, .grid-container {
+                max-width: 2000px;
+            }
+            .story-title { font-size: 4.5rem; }
+            .para-story { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About Us</a></li> 
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <img src="pngwing.com.png" alt="Logo" class="logo-img">
+    
+    </nav>
+
+    <main>
+        <section class="container">
+            <div class="img-wrapper">
+                <img src="baker.jpg" alt="Our Baker" class="img">
+            </div>
+            <div class="story">
+                <h2 class="story-title">The Heart of the Hearth</h2>
+                <p class="para-story">
+                    The story of <b>The Artisan Bakery</b> didn’t start in a commercial kitchen; it started in a small, flour-dusted apartment with a single sourdough starter named "Goldie."
+                    <br><br>
+                    Our founder, Sarah, spent years perfecting the science of hydration and the art of the "slow rise." We believe that bread shouldn't just be a side dish—it should be a memory.
+                </p>
+            </div>
+        </section>
+
+        <section class="services-values">
+            <div class="grid-container">
+                
+                <div class="content-card">
+                    <h2 class="section-title">What We Provide?</h2>
+                    <div class="item">
+                        <h3>1. Daily Artisanal Breads</h3>
+                        <p>Naturally leavened sourdoughs, crusty baguettes, and specialty rye baked fresh every morning.</p>
+                    </div>
+                    <div class="item">
+                        <h3>2. Bespoke Celebration Cakes</h3>
+                        <p>From minimalist "naked" cakes to elaborate floral designs for your special moments.</p>
+                    </div>
+                    <div class="item">
+                        <h3>3. Hand-Laminated Pastries</h3>
+                        <p>Experience the butter-rich layers of our croissants and seasonal fruit danishes.</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="section-title">What We Believe?</h2>
+                    <div class="item">
+                        <h3>1. The Power of "Slow"</h3>
+                        <p>We embrace the Slow Food movement. Long fermentation is the key to flavor and health.</p>
+                    </div>
+                    <div class="item">
+                        <h3>2. Radical Transparency</h3>
+                        <p>We source 100% of our flour from local mills that practice regenerative agriculture.</p>
+                    </div>
+                    <div class="item">
+                        <h3>3. The Art of the Hand</h3>
+                        <p>Machines can’t feel the dough. We believe in hand-shaping every single item we sell.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
